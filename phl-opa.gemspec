@@ -5,12 +5,12 @@ require 'phl_opa/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "phl-opa"
-  spec.version       = PHLOpa::VERSION
+  spec.version       = PHLopa::VERSION
   spec.authors       = ["Casey Thomas"]
   spec.email         = ["cpthomas@gmail.com"]
   spec.description   = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
   spec.summary       = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
-  spec.homepage      = ""
+  spec.homepage      = "https://www.github.com/caseypt/phl-opa"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
