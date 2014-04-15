@@ -14,7 +14,22 @@ describe PHLOpa do
     end
 
     it "returns the property details for the OPA account that is passed" do
-      @phl_opa.get_by_account(883309000)['data']['property']['full_address'] = '1234 MARKET ST'
+      @phl_opa.get_by_account('883309000')['data']['property']['full_address'] = '1234 MARKET ST'
+    end
+
+    it "raises an error if the account argument is not a string" do
+      lambda { @phl_opa.get_by_account(123456780) }.should raise_error
+      lambda { @phl_opa.get_by_account([123456780]) }.should raise_error
+    end
+
+    it "raises an error if the length of the account argument is not exactly 9" do
+      lambda { @phl_opa.get_by_account('12345678') }.should raise_error
+      lambda { @phl_opa.get_by_account('12345678910') }.should raise_error
+    end
+
+    it "raises an error if the account argument contains anything but numbers" do
+      lambda { @phl_opa.get_by_account('123456780z') }.should raise_error
+      lambda { @phl_opa.get_by_account('12345ddfdf6780') }.should raise_error
     end
   end
 end

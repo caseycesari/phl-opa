@@ -14,6 +14,10 @@ module PHLOpa
     end
 
     def get_by_account(account=nil)
+      raise ArgumentError("Account Number must be 9 digits long") unless account.length == 9
+      raise ArgumentError("Account Number must be a string") unless account.is_a? String
+      raise ArgumentError("Account Number must be made up only of numbers") unless account !~ /\D/
+
       response = invoke_api('account/', account)
       data = parse_response(response)
 
