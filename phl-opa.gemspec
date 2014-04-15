@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'phl/opa/version'
+require 'phl_opa/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "phl-opa"
-  spec.version       = Phl::Opa::VERSION
+  spec.version       = PHLOpa::VERSION
   spec.authors       = ["Casey Thomas"]
   spec.email         = ["cpthomas@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
+  spec.summary       = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
   spec.homepage      = ""
   spec.license       = "MIT"
 
