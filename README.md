@@ -1,12 +1,12 @@
-# Phl::Opa
+# PHL-opa
 
-TODO: Write a gem description
+A thin wrapper for the Philadelphia Office of Property Assessment API
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'phl-opa'
+    gem 'phl_opa'
 
 And then execute:
 
@@ -14,11 +14,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install phl-opa
+    $ gem install phl_opa
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO
 
 ## Contributing
 
