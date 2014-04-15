@@ -24,6 +24,13 @@ module PHLopa
       data
     end
 
+    def get_by_address(address=nil)
+      response = invoke_api('address/', address + '/')
+      data = parse_response(response)
+
+      data
+    end
+
     def parse_response(response)
       json = JSON.parse(response.body)
 
@@ -31,7 +38,8 @@ module PHLopa
     end
 
     def invoke_api(path, parameter)
-      url = URI.parse("#{@settings[:api_base]}#{path}#{parameter}#{@settings[:default_query_string]}")
+      encoded = URI::encode(parameter)
+      url = URI.parse("#{@settings[:api_base]}#{path}#{encoded}#{@settings[:default_query_string]}")
 
       Net::HTTP.get_response(url)
     end

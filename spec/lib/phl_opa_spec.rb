@@ -32,4 +32,14 @@ describe PHLopa do
       lambda { @phl_opa.get_by_account('12345ddfdf6780') }.should raise_error
     end
   end
+
+  describe "#get_by_address" do
+    before :each do
+      @phl_opa = PHLopa::API.new
+    end
+
+    it "returns the property details for the adress that is passed" do
+      @phl_opa.get_by_address('1234 Market St')['data']['properties'][0]['account_number'] = '883309000'
+    end
+  end
 end
