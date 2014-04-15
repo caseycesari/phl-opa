@@ -1,7 +1,2 @@
-require "phl/opa/version"
-
-module Phl
-  module Opa
-    # Your code goes here...
-  end
-end
+require "phl_opa/version"
+require "phl_opa/api"
