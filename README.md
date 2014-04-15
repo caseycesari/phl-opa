@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/caseypt/phl-opa.png?branch=master)](https://travis-ci.org/caseypt/phl-opa)
+
 # PHL-opa
 
 A thin wrapper for the Philadelphia Office of Property Assessment API
