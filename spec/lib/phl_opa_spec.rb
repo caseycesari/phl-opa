@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe PHLOpa do
+describe PHLopa do
 
   describe "#new" do
     before :each do
-      @phl_opa = PHLOpa::API.new
+      @phl_opa = PHLopa::API.new
     end
   end
 
   describe "#get_by_account" do
     before :each do
-      @phl_opa = PHLOpa::API.new
+      @phl_opa = PHLopa::API.new
     end
 
     it "returns the property details for the OPA account that is passed" do

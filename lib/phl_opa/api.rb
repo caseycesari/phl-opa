@@ -2,7 +2,7 @@ require "json"
 require "open-uri"
 require "net/http"
 
-module PHLOpa
+module PHLopa
   class API
     attr_accessor :settings
 
