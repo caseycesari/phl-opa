@@ -44,10 +44,23 @@ module PHLopa
 
     def search_by_intersection(street_a=nil, street_b=nil)
       raise ArgumentError("Street_a must be a string") unless street_a.is_a? String
-      raise ArgumentError("Street_a must be a string") unless street_a.is_a? String
+      raise ArgumentError("Street_b must be a string") unless street_b.is_a? String
       if (street_a.nil? || street_b.nil?); raise ArgumentError("Both parameters are required") end
 
       response = invoke_api('intersection/', street_a + '/' + street_b)
+      data = parse_response(response)
+
+      data
+    end
+
+    def search_nearby(lat=nil, lng=nil, radius=200)
+      raise ArgumentError("Latitude must be a number") unless lat.is_a? Float
+      raise ArgumentError("Longitude must be a number") unless lng.is_a? Float
+      raise ArgumentError("Radius must be a number") unless radius.is_a? Fixnum
+      raise ArgumentError("Radius must be a positive number") unless radius > 0
+      if (lat.nil? || lng.nil?); raise ArgumentError("Both latitude and longitude are required") end
+
+      response = invoke_api('nearby/', "#{lng}/#{lat}/#{radius}")
       data = parse_response(response)
 
       data

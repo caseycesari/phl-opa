@@ -83,4 +83,34 @@ describe PHLopa do
     end
   end
 
+  describe "#search_nearby" do
+    before :each do
+      @phl_opa = PHLopa::API.new
+    end
+
+    it "returns the property details for all the properties near the provided point and within the provided radius" do
+      @phl_opa.search_nearby(39.95166, -75.16097, 400)['total'] = 25
+    end
+
+    it "does not require that the user sets the radius argument" do
+      @phl_opa.search_nearby(39.95166, -75.16097)['total'] = 4
+    end
+
+    it "raises an error if the radius argument is not a positive number" do
+      lambda { @phl_opa.search_nearby(39.95166, -75.16097, -100) }.should raise_error
+      lambda { @phl_opa.search_nearby(39.95166, -75.16097, '1000') }.should raise_error
+    end
+
+    it "raises an error if either the latitude or longitude arguments are nil" do
+      lambda { @phl_opa.search_nearby(nil, -75.16097, 100) }.should raise_error
+      lambda { @phl_opa.search_nearby(39.95166, nil, 100) }.should raise_error
+      lambda { @phl_opa.search_nearby(nil, nil, 100) }.should raise_error
+    end
+
+    it "raises an error if either the latitude or longitude arguments are not numbers" do
+      lambda { @phl_opa.search_nearby(39.95166, '-75.16097', 100) }.should raise_error
+      lambda { @phl_opa.search_nearby('39.95166', -75.16097, 100) }.should raise_error
+    end
+  end
+
 end

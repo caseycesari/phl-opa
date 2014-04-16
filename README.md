@@ -52,7 +52,7 @@ Response:
 
 **#search_by_address**
 
-Searches for properties that match the provided address. In the response, the `data` keys is always an array, even if there is only one result
+Searches for properties that match the provided address. In the response, the `data.properties` key is always an array, even if there is only one result
 
     require 'phl_opa'
     phl_opa = PHLopa::API.new
@@ -82,7 +82,7 @@ Response
 
 **#search_by_block**
 
-Searches for properties that are located on the provided block. In the response, the `data` keys is always an array, even if there is only one result.
+Searches for properties that are located on the provided block. In the response, the `data.properties` key is always an array, even if there is only one result.
 
     require 'phl_opa'
     phl_opa = PHLopa::API.new
@@ -112,7 +112,7 @@ Response
 
 **#search_by_intersection**
 
-Searches for properties that are near the provided the intersection. In the response, the `data` keys is always an array, even if there is only one result.
+Searches for properties that are near the provided the intersection. In the response, the `data.properties` key is always an array, even if there is only one result.
 
     require 'phl_opa'
     phl_opa = PHLopa::API.new
@@ -138,6 +138,36 @@ Response
             match_type: null
           },
           geometry: {
+    ...
+
+**#search_nearby**
+
+Searches for properties that are near the provide latitude/longitude coordinate, and within the provided radius. The default distance for `radius` is 200 feet, and is not required. In the response, the `data.properties` key is always an array, even if there is only one result.
+
+    require 'phl_opa'
+    phl_opa = PHLopa::API.new
+    phl_opa.search_nearby(-75.16097, 39.95166, 400)
+
+Response
+
+    {
+      status: "success",
+      total: 25,
+      data: {
+        properties: [{
+        property_id: "5356001200",
+        account_number: "883705320",
+        full_address: "1200 MARKET ST",
+        unit: "",
+        zip: "191073615",
+        address_match: {
+          original: null,
+          standardized: null,
+          similarity: null,
+          match_code: null,
+          match_type: null
+        },
+        geometry: {
     ...
 
 ## Contributing
