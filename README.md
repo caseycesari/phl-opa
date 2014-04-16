@@ -2,7 +2,7 @@
 
 # PHL-opa
 
-A thin wrapper for the Philadelphia Office of Property Assessment API
+A thin wrapper for the Philadelphia [Office of Property Assessment API](http://phlapi.com/opaapi.html)
 
 ## Installation
 
@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-Search by account number
+**#get_by_account**
+
+Returns the property details for the provided OPA account number. This method returns the most amount of data about a given property. If you have an address, but not an OPA account number. Use the `#search_by_address` method to find the OPA account number, then this method to get all the details about the property.
 
     require 'phl_opa'
     phl_opa = PHLopa::API.new
@@ -48,11 +50,13 @@ Response:
           }
       ...
 
-Search by address
+**#search_by_address**
+
+Searches for properties that match the provided address. In the response, the `data` keys is always an array, even if there is only one result
 
     require 'phl_opa'
     phl_opa = PHLopa::API.new
-    phl_opa.get_by_address('1234 Market St')
+    phl_opa.search_by_address('1234 Market St')
 
 Response
 
@@ -72,6 +76,66 @@ Response
             similarity: 100,
             match_code: "",
             match_type: "MA"
+          },
+          geometry: {
+    ...
+
+**#search_by_block**
+
+Searches for properties that are located on the provided block. In the response, the `data` keys is always an array, even if there is only one result.
+
+    require 'phl_opa'
+    phl_opa = PHLopa::API.new
+    phl_opa.search_by_block('1234 Market St')
+
+Response
+
+    {
+      status: "success",
+      total: 3,
+      data: {
+        properties: [{
+          property_id: "5356001200",
+          account_number: "883705320",
+          full_address: "1200 MARKET ST",
+          unit: "",
+          zip: "191073615",
+          address_match: {
+            original: "1200-1298 market st",
+            standardized: "1200 MARKET ST",
+            similarity: 100,
+            match_code: "",
+            match_type: "MA"
+          },
+          geometry: {
+    ...
+
+**#search_by_intersection**
+
+Searches for properties that are near the provided the intersection. In the response, the `data` keys is always an array, even if there is only one result.
+
+    require 'phl_opa'
+    phl_opa = PHLopa::API.new
+    phl_opa.search_by_intersection('Market St', '12th')
+
+Response
+
+    {
+      status: "success",
+      total: 5,
+      data: {
+        properties: [{
+          property_id: "53560011130000001",
+          account_number: "883705100",
+          full_address: "1113 MARKET ST",
+          unit: "0000001",
+          zip: "19107-2901",
+          address_match: {
+            original: null,
+            standardized: null,
+            similarity: null,
+            match_code: null,
+            match_type: null
           },
           geometry: {
     ...

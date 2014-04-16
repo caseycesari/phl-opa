@@ -24,10 +24,30 @@ module PHLopa
       data
     end
 
-    def get_by_address(address=nil)
+    def search_by_address(address=nil)
       raise ArgumentError("Address must be a string") unless address.is_a? String
 
       response = invoke_api('address/', address + '/')
+      data = parse_response(response)
+
+      data
+    end
+
+    def search_by_block(block=nil)
+      raise ArgumentError("Block must be a string") unless block.is_a? String
+
+      response = invoke_api('block/', block + '/')
+      data = parse_response(response)
+
+      data
+    end
+
+    def search_by_intersection(street_a=nil, street_b=nil)
+      raise ArgumentError("Street_a must be a string") unless street_a.is_a? String
+      raise ArgumentError("Street_a must be a string") unless street_a.is_a? String
+      if (street_a.nil? || street_b.nil?); raise ArgumentError("Both parameters are required") end
+
+      response = invoke_api('intersection/', street_a + '/' + street_b)
       data = parse_response(response)
 
       data
