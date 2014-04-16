@@ -25,6 +25,8 @@ module PHLopa
     end
 
     def get_by_address(address=nil)
+      raise ArgumentError("Address must be a string") unless address.is_a? String
+
       response = invoke_api('address/', address + '/')
       data = parse_response(response)
 

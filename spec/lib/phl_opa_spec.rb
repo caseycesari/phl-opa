@@ -41,5 +41,10 @@ describe PHLopa do
     it "returns the property details for the adress that is passed" do
       @phl_opa.get_by_address('1234 Market St')['data']['properties'][0]['account_number'] = '883309000'
     end
+
+    it "raises an error if the address argument is not a string" do
+      lambda { @phl_opa.get_by_address(123456780) }.should raise_error
+      lambda { @phl_opa.get_by_address(['1234 Market St']) }.should raise_error
+    end
   end
 end
