@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Casey Thomas"]
   spec.email         = ["cpthomas@gmail.com"]
   spec.description   = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
-  spec.summary       = %q{A thin wrapper for the Philadelphia Office of Property Assessment API}
+  spec.summary       = %q{Get information about properties in Philadelphia}
   spec.homepage      = "https://www.github.com/caseypt/phl-opa"
   spec.license       = "MIT"
 
