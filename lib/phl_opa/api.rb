@@ -3,15 +3,11 @@ require "open-uri"
 require "net/http"
 
 module PHLopa
-  class API
-    attr_accessor :settings
 
-    def initialize(options={})
-      @settings = {
-        :api_base => "http://api.phila.gov/opa/v1.0/",
-        :default_query_string => "?format=json"
-      }.merge(options)
-    end
+  API_BASE = "http://api.phila.gov/opa/v1.0/"
+  DEFAULT_QUERY_STRING = "?format=json"
+
+  class << self
 
     def get_by_account(account=nil)
       raise ArgumentError("Account Number must be 9 digits long") unless account.length == 9
@@ -66,6 +62,8 @@ module PHLopa
       data
     end
 
+    private
+
     def parse_response(response)
       json = JSON.parse(response.body)
 
@@ -74,7 +72,7 @@ module PHLopa
 
     def invoke_api(path, parameter)
       encoded = URI::encode(parameter)
-      url = URI.parse("#{@settings[:api_base]}#{path}#{encoded}#{@settings[:default_query_string]}")
+      url = URI.parse("#{API_BASE}#{path}#{encoded}#{DEFAULT_QUERY_STRING}")
 
       Net::HTTP.get_response(url)
     end

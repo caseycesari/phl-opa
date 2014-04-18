@@ -20,13 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
+Require the module
+
+    require 'phl_opa'
+
 **#get_by_account**
 
 Returns the property details for the provided OPA account number. This method returns the most amount of data about a given property. If you have an address, but not an OPA account number. Use the `#search_by_address` method to find the OPA account number, then this method to get all the details about the property.
 
-    require 'phl_opa'
-    phl_opa = PHLopa::API.new
-    phl_opa.get_by_account(883309000)
+    PHLopa.get_by_account(883309000)
 
 Response:
 
@@ -54,9 +56,7 @@ Response:
 
 Searches for properties that match the provided address. In the response, the `data.properties` key is always an array, even if there is only one result
 
-    require 'phl_opa'
-    phl_opa = PHLopa::API.new
-    phl_opa.search_by_address('1234 Market St')
+    PHLopa.search_by_address('1234 Market St')
 
 Response
 
@@ -84,9 +84,7 @@ Response
 
 Searches for properties that are located on the provided block. In the response, the `data.properties` key is always an array, even if there is only one result.
 
-    require 'phl_opa'
-    phl_opa = PHLopa::API.new
-    phl_opa.search_by_block('1234 Market St')
+    PHLopa.search_by_block('1234 Market St')
 
 Response
 
@@ -114,9 +112,7 @@ Response
 
 Searches for properties that are near the provided the intersection. In the response, the `data.properties` key is always an array, even if there is only one result.
 
-    require 'phl_opa'
-    phl_opa = PHLopa::API.new
-    phl_opa.search_by_intersection('Market St', '12th')
+    PHLopa.search_by_intersection('Market St', '12th')
 
 Response
 
@@ -144,9 +140,7 @@ Response
 
 Searches for properties that are near the provide latitude/longitude coordinate, and within the provided radius. The default distance for `radius` is 200 feet, and is not required. In the response, the `data.properties` key is always an array, even if there is only one result.
 
-    require 'phl_opa'
-    phl_opa = PHLopa::API.new
-    phl_opa.search_nearby(-75.16097, 39.95166, 400)
+    PHLopa.search_nearby(-75.16097, 39.95166, 400)
 
 Response
 
