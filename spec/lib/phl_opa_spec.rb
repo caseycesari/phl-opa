@@ -4,7 +4,7 @@ describe PHLopa do
 
   describe "#get_by_account" do
     it "returns the property details for the OPA account that is passed" do
-      PHLopa.get_by_account('883309000')['data']['property']['full_address'] = '1234 MARKET ST'
+      PHLopa.get_by_account('883309000')['data']['property']['full_address'] == '1234 MARKET ST'
     end
 
     it "raises an error if the account argument is not a string" do
@@ -25,7 +25,7 @@ describe PHLopa do
 
   describe "#search_by_address" do
     it "returns the property details for the adress that is passed" do
-      PHLopa.search_by_address('1234 Market St')['data']['properties'][0]['account_number'] = '883309000'
+      PHLopa.search_by_address('1234 Market St')['data']['properties'][0]['account_number'] == '883309000'
     end
 
     it "raises an error if the address argument is not a string" do
@@ -36,7 +36,7 @@ describe PHLopa do
 
   describe "#search_by_block" do
     it "returns the property details for all the properties on the searched block" do
-      PHLopa.search_by_block('1200 Market St')['total'] = 3
+      PHLopa.search_by_block('1200 Market St')['total'] == 3
     end
 
     it "raises an error if the address argument is not a string" do
@@ -47,7 +47,7 @@ describe PHLopa do
 
   describe "#search_by_intersection" do
     it "returns the property details for all the properties near the provided intersection" do
-      PHLopa.search_by_intersection('12th', 'Market')['total'] = 5
+      PHLopa.search_by_intersection('12th', 'Market')['total'] == 5
     end
 
     it "raises an error if the address argument is not a string" do
@@ -63,11 +63,11 @@ describe PHLopa do
 
   describe "#search_nearby" do
     it "returns the property details for all the properties near the provided point and within the provided radius" do
-      PHLopa.search_nearby(39.95166, -75.16097, 400)['total'] = 25
+      PHLopa.search_nearby(39.95166, -75.16097, 400)['total'] == 25
     end
 
     it "does not require that the user sets the radius argument" do
-      PHLopa.search_nearby(39.95166, -75.16097)['total'] = 4
+      PHLopa.search_nearby(39.95166, -75.16097)['total'] == 4
     end
 
     it "raises an error if the radius argument is not a positive number" do
