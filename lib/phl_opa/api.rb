@@ -4,7 +4,7 @@ require "net/http"
 
 module PHLopa
 
-  API_BASE = "http://api.phila.gov/opa/v1.0/"
+  API_BASE = "http://api.phila.gov/opa/v1.1/"
   DEFAULT_QUERY_STRING = "?format=json"
 
   class << self
